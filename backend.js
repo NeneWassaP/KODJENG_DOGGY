@@ -187,24 +187,6 @@ export async function getAllNoti() {
   }
 }
 
-// export async function getAlarm() {
-//   try {
-//     const itemRef = ref(db, `Alarm/-OC2Rb3bzwM2faZGCHKf`);
-//     console.log("Hello")
-//     // Fetch the data
-//     const snapshot = await get(itemRef);
-//     if (snapshot.exists()) {
-//       console.log(snapshot.val());
-//       return snapshot.val();
-//     } else {
-//       console.log("No data available for the provided ID.");
-//       return null;
-//     }
-//   } catch (error) {
-//     console.error("Error fetching data:", error);
-//     throw error;
-//   }
-
 export async function checkFoodTank() {
   const dbRef = ref(getDatabase());
   var data;
@@ -284,5 +266,3 @@ const addBtn = document.getElementById("addBtn");
 addBtn.addEventListener("click", addData);
 const addBtnCus = document.getElementById("addBtnCus");
 addBtnCus.addEventListener("click", addDataCus);
-// const paw = document.getElementById("pet_paw");
-// paw.addEventListener("click", Notification);

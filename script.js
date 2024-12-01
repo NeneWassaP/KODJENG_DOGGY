@@ -137,10 +137,6 @@ editAppear()
 // Check the time every second
 
 
-// window.handleEdit(){
-//     const toggleButton = document.getElementById("toggle-switch");
-// }
-
 window.editAppear = () =>{
     const editButton = document.getElementById('edit-btn');// Locate the Edit button
     // Locate the Edit button
@@ -175,24 +171,6 @@ window.handleEdit = ()=> {
     console.log(isEditing) // Toggle the edit mode
     updateAlarmList(); // Update the list with red boxes if in edit mode
   };
-  
-// export function isFutureDate(inputDateString) {
-//     if (!inputDateString) {
-//         console.error('Invalid date string');
-//         return false;
-//     }
-
-//     const inputDate = new Date(inputDateString); // Convert the string to a Date object
-//     const now = new Date(); // Get the current date
-    
-//     // Set time of both dates to midnight for date-only comparison
-//     inputDate.setHours(0, 0, 0, 0);
-//     now.setHours(0, 0, 0, 0);
-
-//     // Return true if the input date is today or in the future
-//     return inputDate >= now;
-// }
-
 
 
 
@@ -385,9 +363,6 @@ window.setAlarmCus =()=> {
   
   // window.to check the current time against all set alarms
 
- 
-  
-  
   // Check the time every second
 
   
