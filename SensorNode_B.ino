@@ -54,7 +54,6 @@ int state = 0;
 
 void loop() {
   // put your main code here, to run repeatedly:
-  //Serial.println(mode);
 
   if (Serial.available()) {
     Serial.println("Serial available");
@@ -62,14 +61,6 @@ void loop() {
     Serial1.write(c); // ส่งข้อมูลไป ESP32 B
   }
 
-  // if (Serial.available()) {
-  //   char c = Serial.read();
-  //   Serial1.write(c); // ส่งข้อมูลไป ESP32 B
-  // }
-  // while (Serial1.available()) {
-  //   char c = Serial1.read();
-  //   Serial.write(c); // ส่งข้อมูลไปยัง Serial Monitor ของ ESP32 A
-  // }
   if(!Serial1.available()){
     Serial1.begin(115200, SERIAL_8N1, RXD1, TXD1);
   }
@@ -81,9 +72,6 @@ void loop() {
     Serial.println(c);
     if(c != '\n'){
       if(mode == 0){
-      //Serial.print("MODE 0   ");
-      // char c = Serial1.read();
-      // Serial.println(c);
       if(c == '&'){
         if(start){
           Serial.println(s.toInt());
@@ -146,16 +134,13 @@ void loop() {
       sent += '&';
 
       Serial.println(sent);
-      //delay(100);
 
       //SEND DATA TO ANOTHER BOARD
-      //if (Serial.available()) {
         Serial1.flush();
         for(int i=0; i <sent.length(); i++){
           Serial1.write(sent[i]);
           delay(100);
         }
-      //}
 
       //CLEAR
       mode = 0;
@@ -246,13 +231,4 @@ void connectToWiFi() {
 
   Serial.println("Connected to WiFi!");
 }
-
-// if (Serial.available()) {
-//   char c = Serial.read();
-//   Serial1.write(c); // ส่งข้อมูลไป ESP32 B
-// }
-// while (Serial1.available()) {
-//   char c = Serial1.read();
-//   Serial.write(c); // ส่งข้อมูลไปยัง Serial Monitor ของ ESP32 A
-// }
 

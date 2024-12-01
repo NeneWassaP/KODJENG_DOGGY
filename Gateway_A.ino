@@ -4,9 +4,6 @@
 #include <ESP32Time.h>
 #include <SoftwareSerial.h>
 #include "stdbool.h"
-//#include <WiFiClientSecure.h>
-//#include <TridentTD_LineNotify.h>
-//#include <ArtronShop_LineNotify.h> // นำเข้าไลบารี่ ArtronShop_LineNotify
 
 #include "cJSON.h"
 
@@ -14,7 +11,6 @@
 #define TXD1 (19)
 #define WIFI_SSID "NENE"
 #define WIFI_PASSWORD "Nene12345"
-//#define LINE_TOKEN "CHQssV6BqSlmomZcaqrOSvcRRQ3jATAVxGyMG4FTALe" 
 
 //--------config firebase
 #define FIREBASE_HOST "https://kodjengdoggy-default-rtdb.asia-southeast1.firebasedatabase.app"  // Your Firebase Realtime Database URL
@@ -83,13 +79,7 @@ void setup() {
 }
 
 void loop() {
-  
-  // if (Serial.available()) {
-  //   char c = Serial.read();
-  //   Serial.print(c);
-  //   Serial1.write(c); // ส่งข้อมูลไป ESP32 B
-  //   delay(100);
-  // }
+
   
   willDispenseDef();
   willDispenseCus();
@@ -101,17 +91,9 @@ void loop() {
     
     if(c == '&'){
       if(start){
-        //Serial.println(s.toInt());
+
         grams = s.toInt();
         s = "";
-
-        // Serial.print("grams =");
-        // Serial.println(grams);
-        // Serial.print("shake =");
-        // Serial.println(shake);
-
-        // Serial.print("past grams =");
-        // Serial.println(past_grams);
 
         if(grams != past_grams){
           Serial.println("add data");
@@ -129,35 +111,22 @@ void loop() {
     }
     else if(c == '/'){
       if(start){
-        //Serial.println(s.toInt());
         grams = s.toInt();
         s = "";
 
-        // Serial.print("grams =");
-        // Serial.println(grams);
         shake = 0;
         addData();
-
-
       }
       start = !start;
-
     }
     else if(start){
       s += c;
       continue;
-    }
-   
+    } 
   }
 
   delay(10000);
 
-  // String test = "&50&";
-  // Serial.println(test);
-  // for(int i=0; i<4; i++){
-  //   Serial1.write(test[i]);
-  // }
-  
  // -------------------ultra
 
   digitalWrite(UTpingPin, LOW);
@@ -169,7 +138,6 @@ void loop() {
   UTduration = pulseIn(UTinPin, HIGH);
   
   UTcm = microsecondsToCentimeters(UTduration);
-  //Serial.println(UTcm);
 
   if(UTcount < 100){
     if(UTcm != 0){
