@@ -1,0 +1,22 @@
+@startuml 
+' Overview diagram for Auto Feeding Machine with Firebase System
+
+package "Feeding Machine" {
+  [Feeding Machine] --> [Sensors]
+'   [Feeding Machine] --> [Motor & Actuators]
+}
+
+package "Microcontroller" {
+  [Microcontroller] --> [Wi-Fi/Bluetooth Module]
+}
+
+package "Cloud System" {
+  [Firebase Database] --> [Firebase Server]
+  [Firebase Server] --> [Mobile/Web App]
+}
+
+[Feeding Machine] --> [Microcontroller] : Sends Data/Commands
+[Microcontroller] --> [Firebase Server] : Uploads Data/Receives Commands
+[Mobile/Web App] --> [Firebase Server] : Sends Commands/Receives Data
+
+@enduml

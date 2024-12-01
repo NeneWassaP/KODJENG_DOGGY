@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Inria_Serif",
+			"path": "../../../Downloads/Inria_Serif"
+		},
+		{
+			"name": "embed",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
